@@ -3,7 +3,7 @@ Installation
 
 Install by running the following:
 
-    python setup.py install
+  python setup.py install
 
 
 Configuration
@@ -15,10 +15,10 @@ it should be available.
 
 You may change prefered quality in your Mopidy configuration file:
 
-    [difm]
-    enabled = true
-    quality = 320k
-    api_key = 2398479237492374829384
+  [difm]
+  enabled = true
+  quality = 320k
+  api_key = 2398479237492374829384
 
 If you have a DI.FM premium account, fill in your API key. This will allow you to use the higher
 quality streams as usual.
