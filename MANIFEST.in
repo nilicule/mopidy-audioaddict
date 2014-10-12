@@ -1,0 +1,7 @@
+include LICENSE
+include MANIFEST.in
+include README.rst
+include CHANGES.rst
+include mopidy_difm/ext.conf
+
+recursive-include tests *.py
