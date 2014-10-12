@@ -13,12 +13,8 @@ Make sure you enable the extension after you've completed the installation. You 
 need the Mopidy-Stream extension enabled - it's bundled with Mopidy, so unless you disabled it
 it should be available.
 
-You may change prefered quality in your Mopidy configuration file:
-
-> [difm]
-> enabled = true
-> quality = 320k
-> api_key = 2398479237492374829384
+You may change prefered quality in your Mopidy configuration file. An example configuration is
+included in the ext.conf file.
 
 If you have a DI.FM premium account, fill in your API key. This will allow you to use the higher
 quality streams as usual. 
