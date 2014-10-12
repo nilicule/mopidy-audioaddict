@@ -38,7 +38,7 @@ class DigitallyImportedClient(object):
             r1 = urlparse.urlsplit(proxy)
             self.proxies = {r1.scheme: proxy}
 
-    def refresh(self, quality):
+    def refresh(self, quality, api_key):
         # clean previous data
         self.channels = {}
 
@@ -71,22 +71,22 @@ class DigitallyImportedClient(object):
 
             channel_data['channelid'] = child_channel['key']
 
-            if (len(schema['api_key'])):
+            if (len(api_key)):
                 if (plsquality == '320k'):
                     channelurl = "";
-                    plsurl = 'http://listen.di.fm/premium_high/' + channel_data['channelid'] + '.pls?' + schema['api_key'];
+                    plsurl = 'http://listen.di.fm/premium_high/' + channel_data['channelid'] + '.pls?' + api_key;
                     channel_data['pls'] = plsurl;
                 if (plsquality == '128k'):
                     channelurl = "";
-                    plsurl = 'http://listen.di.fm/premium/' + channel_data['channelid'] +'.pls?' + schema['api_key'];
+                    plsurl = 'http://listen.di.fm/premium/' + channel_data['channelid'] +'.pls?' + api_key;
                     channel_data['pls'] = plsurl;
                 if (plsquality == '64k'):
                     channelurl = "";
-                    plsurl = 'http://listen.di.fm/premium_medium/' + channel_data['channelid'] +'.pls?' + schema['api_key'];
+                    plsurl = 'http://listen.di.fm/premium_medium/' + channel_data['channelid'] +'.pls?' + api_key;
                     channel_data['pls'] = plsurl;
                 if (plsquality == '40k'):
                     channelurl = "";
-                    plsurl = 'http://listen.di.fm/premium_low/' + channel_data['channelid'] +'.pls?' + schema['api_key'];
+                    plsurl = 'http://listen.di.fm/premium_low/' + channel_data['channelid'] +'.pls?' + api_key;
                     channel_data['pls'] = plsurl;
             else:
                 if (plsquality == '64k'):

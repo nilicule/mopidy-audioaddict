@@ -47,9 +47,10 @@ class DigitallyImportedBackend(pykka.ThreadingActor, backend.Backend):
 
         self.uri_schemes = ['difm']
         self.quality = config['difm']['quality']
+        self.api_key = config['difm']['api_key']
 
     def on_start(self):
-        self.difm.refresh(self.quality)
+        self.difm.refresh(self.quality, self.api_key)
 
 
 class DigitallyImportedLibraryProvider(backend.LibraryProvider):
