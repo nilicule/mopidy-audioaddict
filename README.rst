@@ -16,8 +16,8 @@ it should be available.
 You may change prefered quality in your Mopidy configuration file. An example configuration is
 included in the ext.conf file.
 
-If you have a DI.FM premium account, fill in your API key. This will allow you to use the higher
-quality streams as usual. 
+If you have an AudioAddict premium account, fill in your API key. This will allow you to use the 
+higher quality streams as usual on all the network sites.
 
 For quality you can pick between 40k, 64k, 128k and 320k
 
@@ -25,4 +25,4 @@ For quality you can pick between 40k, 64k, 128k and 320k
 Project resources
 =================
 
-Bugs, feedback and patches are always welcome at https://github.com/nilicule/mopidy-difm
+Bugs, feedback and patches are always welcome at https://github.com/nilicule/mopidy-audioaddict
