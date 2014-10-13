@@ -11,16 +11,14 @@ def get_version(filename):
 
 
 setup(
-    name='Mopidy-DigitallyImported',
-    version=get_version('mopidy_difm/__init__.py'),
-    url='http://github.com/nilicule/mopidy/mopidy-difm',
-    license='MIT License',
+    name='Mopidy-AudioAddict',
+    version=get_version('mopidy_audioaddict/__init__.py'),
+    url='https://github.com/nilicule/mopidy-audioaddict',
+    license='Apache License, Version 2.0',
     author='Remco Brink',
     author_email='remco@rc6.org',
-    description='DI.FM extension for Mopidy',
-    long_description="%s\n\n%s" % (
-        open('README.rst').read(),
-        open('CHANGES.rst').read()),
+    description='Mopidy extension for the AudioAddict network of radiostations',
+    long_description=open('README.rst').read(),
     packages=find_packages(exclude=['tests', 'tests.*']),
     zip_safe=False,
     include_package_data=True,
@@ -28,7 +26,7 @@ setup(
         'setuptools',
         'Mopidy >= 0.18',
         'Pykka >= 1.1',
-        'requests'
+        'pycountry',
     ],
     test_suite='nose.collector',
     tests_require=[
@@ -37,13 +35,13 @@ setup(
     ],
     entry_points={
         'mopidy.ext': [
-            'difm = mopidy_difm:Extension',
+            'audioaddict = mopidy_audioaddict:Extension',
         ],
     },
     classifiers=[
         'Environment :: No Input/Output (Daemon)',
         'Intended Audience :: End Users/Desktop',
-        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved :: Apache Software License',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2',
         'Topic :: Multimedia :: Sound/Audio :: Players',
