@@ -1,6 +1,6 @@
 Changelog
 =========
-v0.2.0 (2014-10-13)
+v0.1.1 (2014-10-13)
 - Renamed project to Mopidy-AudioAddict
 - Added support for the entire AudioAddict network. The extension
   now plays DI.FM, RadioTunes, RockRadio, JazzRadio and FrescaRadio
