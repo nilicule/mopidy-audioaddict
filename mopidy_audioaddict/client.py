@@ -25,7 +25,7 @@ class AudioAddict(object):
         self._frescaradio = frescaradio
 
         # Figure out our API key
-        if len(self._username) and len(self._password):
+        if self._username and self._password:
             self._api_key, self._has_premium = self._fetchApiKey(self._username, self._password)
         else:
             self._api_key = ""
