@@ -25,7 +25,10 @@ class AudioAddict(object):
         self._frescaradio = frescaradio
 
         # Figure out our API key
-        self._api_key = self._fetchApiKey(self._username, self._password)        
+        if len(self._username) and len(self._password):
+            self._api_key = self._fetchApiKey(self._username, self._password)
+        else:
+            self._api_key = ""
 
     def flush(self):
         self._cache = {}
@@ -73,10 +76,14 @@ class AudioAddict(object):
             if (self._quality == '40k'):
                 streampls = 'premium_low'
         else:
-            streampls = 'http://listen.di.fm/public3/hardstyle.pls'
+            streampls = 'public3'
 
         for channel in channels:
-            channel['streamurl'] = 'http://' + hostname + '/premium_high/' + channel['key'] + '.pls?' + self._api_key
+            if (len(self._api_key)):
+                channel['streamurl'] = 'http://' + hostname + '/' + streampls + '/' + channel['key'] + '.pls?' + self._api_key
+            else:
+                channel['streamurl'] = 'http://' + hostname + '/' + streampls + '/' + channel['key'] + '.pls'
+
             self._channels.setdefault(channel['id'], channel)
         return channels
 
