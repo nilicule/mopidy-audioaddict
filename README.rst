@@ -5,6 +5,10 @@ Install by running the following:
 
   python setup.py install
 
+You can also install the plugin from PyPI:
+
+  pip install Mopidy-AudioAddict
+
 
 Configuration
 =============
@@ -13,16 +17,25 @@ Make sure you enable the extension after you've completed the installation. You 
 need the Mopidy-Stream extension enabled - it's bundled with Mopidy, so unless you disabled it
 it should be available.
 
-An example configuration is included in the ext.conf file. Make sure to enable the plugin and
-at least one of the AudioAddict stations.
+Example configuration:
 
-Optionally you can set a username and password from any of the AudioAddict sites to have the plugin
-check if premium is enabled for you. With a premium-enabled account the valid stream options
-are 40k, 64k, 128k and 320k, without a premium-enabled account the plugin will default to the
-lower-quality public stream.
-
-If you don't want all AudioAddict stations to show up in Mopidy you can disable individual stations
-in the Mopidy configuration.
+    [audioaddict]
+    # enable plugin
+    enabled = true
+    # username and password
+    username = john@doe.net
+    password = supersecret
+    # you need an account if you want to set stream quality
+    # valid options:
+    #   40k, 64k (free)
+    #   40k, 64k, 128k, 320k (premium)
+    quality = 320k
+    # enable or disable individual stations
+    difm = true
+    radiotunes = true
+    rockradio = true
+    jazzradio = true
+    frescaradio = true
 
 
 Project resources

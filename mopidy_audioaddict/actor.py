@@ -60,6 +60,7 @@ class AudioAddictLibrary(backend.LibraryProvider):
         if not channel:
             return []
         ref = translator.channel_to_ref(channel)
+
         return [Track(uri=ref.uri, name=ref.name)]
 
     def find_exact(self, query=None, uris=None):
