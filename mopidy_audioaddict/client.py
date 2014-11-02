@@ -48,13 +48,9 @@ class AudioAddict(object):
         if self._frescaradio:
             stationlist.append({'id': 5, 'name': 'FrescaRadio', 'shortcode': 'frescaradio'})
 
-#        stationlist = [
-#            {'id': 1, 'name': 'Digitally Imported', 'shortcode': 'difm',},
-#            {'id': 2, 'name': 'RadioTunes', 'shortcode': 'radiotunes',},
-#            {'id': 3, 'name': 'RockRadio', 'shortcode': 'rockradio',},
-#            {'id': 4, 'name': 'JazzRadio', 'shortcode': 'jazzradio',},
-#            {'id': 5, 'name': 'FrescaRadio', 'shortcode': 'frescaradio',}
-#        ]
+        if not stationlist:
+            # Default to at least one network
+            stationlist.append({'id': 1, 'name': 'Digitally Imported', 'shortcode': 'difm'})
 
         return stationlist
 

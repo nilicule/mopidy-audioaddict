@@ -1,5 +1,11 @@
 Changelog
 =========
+v0.2.4 (2014-11-02)
+-------------------
+- Fixed bug where disabled stations were still shown in Mopidy
+- Most configuration settings are now optional
+- Cleaned up README.rst
+
 v0.2.3 (2014-11-02)
 -------------------
 - Username and password are now completely optional
