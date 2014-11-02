@@ -1,5 +1,9 @@
 Changelog
 =========
+v0.2.2 (2014-11-02)
+-------------------
+- Fix bug for users without premium, but with a valid AudioAddict API key
+
 v0.2.1 (2014-11-02)
 -------------------
 - Fixed bug for users without premium, now picks correct stream URL

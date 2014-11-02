@@ -26,9 +26,10 @@ class AudioAddict(object):
 
         # Figure out our API key
         if len(self._username) and len(self._password):
-            self._api_key = self._fetchApiKey(self._username, self._password)
+            self._api_key, self._has_premium = self._fetchApiKey(self._username, self._password)
         else:
             self._api_key = ""
+            self._has_premium = False
 
     def flush(self):
         self._cache = {}
@@ -66,7 +67,7 @@ class AudioAddict(object):
         else:
             return []
 
-        if (len(self._api_key)):
+        if (len(self._api_key)) and self._has_premium:
             if (self._quality == '320k'):
                 streampls = 'premium_high'
             if (self._quality == '128k'):
@@ -101,7 +102,16 @@ class AudioAddict(object):
         payload = {'username': username, 'password': password}
         r = requests.post("https://api.audioaddict.com/v1/di/members/authenticate", data=payload)
         json_object_raw = r.json()
-        return json_object_raw['listen_key']
+
+        subscriptions = json_object_raw['subscriptions']
+        listen_key = json_object_raw['listen_key']
+
+        if not subscriptions:
+            has_premium = False
+        else:
+            has_premium = True
+
+        return (listen_key, has_premium)
 
     def _fetch(self, uri, default):
         if uri in self._cache:
