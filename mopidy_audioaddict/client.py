@@ -28,7 +28,7 @@ class AudioAddict(object):
         if self._username and self._password:
             self._api_key, self._has_premium = self._fetchApiKey(self._username, self._password)
         else:
-            self._api_key = ""
+            self._api_key = None
             self._has_premium = False
 
     def flush(self):
@@ -36,13 +36,25 @@ class AudioAddict(object):
         self._channels = {}
 
     def radiostations(self, radiostation=None):
-        stationlist = [
-            {'id': 1, 'name': 'Digitally Imported', 'shortcode': 'difm',},
-            {'id': 2, 'name': 'RadioTunes', 'shortcode': 'radiotunes',},
-            {'id': 3, 'name': 'RockRadio', 'shortcode': 'rockradio',},
-            {'id': 4, 'name': 'JazzRadio', 'shortcode': 'jazzradio',},
-            {'id': 5, 'name': 'FrescaRadio', 'shortcode': 'frescaradio',}
-        ]
+        stationlist = []
+        if self._difm:
+            stationlist.append({'id': 1, 'name': 'Digitally Imported', 'shortcode': 'difm'})
+        if self._radiotunes:
+            stationlist.append({'id': 2, 'name': 'RadioTunes', 'shortcode': 'radiotunes'})
+        if self._rockradio:
+            stationlist.append({'id': 3, 'name': 'RockRadio', 'shortcode': 'rockradio'})
+        if self._jazzradio:
+            stationlist.append({'id': 4, 'name': 'JazzRadio', 'shortcode': 'jazzradio'})
+        if self._frescaradio:
+            stationlist.append({'id': 5, 'name': 'FrescaRadio', 'shortcode': 'frescaradio'})
+
+#        stationlist = [
+#            {'id': 1, 'name': 'Digitally Imported', 'shortcode': 'difm',},
+#            {'id': 2, 'name': 'RadioTunes', 'shortcode': 'radiotunes',},
+#            {'id': 3, 'name': 'RockRadio', 'shortcode': 'rockradio',},
+#            {'id': 4, 'name': 'JazzRadio', 'shortcode': 'jazzradio',},
+#            {'id': 5, 'name': 'FrescaRadio', 'shortcode': 'frescaradio',}
+#        ]
 
         return stationlist
 
@@ -67,20 +79,23 @@ class AudioAddict(object):
         else:
             return []
 
-        if (len(self._api_key)) and self._has_premium:
-            if (self._quality == '320k'):
+        if self._api_key and self._has_premium:
+            if self._quality:
+                if (self._quality == '320k'):
+                    streampls = 'premium_high'
+                if (self._quality == '128k'):
+                    streampls = 'premium'
+                if (self._quality == '64k'):
+                    streampls = 'premium_medium'
+                if (self._quality == '40k'):
+                    streampls = 'premium_low'
+            else:
                 streampls = 'premium_high'
-            if (self._quality == '128k'):
-                streampls = 'premium'
-            if (self._quality == '64k'):
-                streampls = 'premium_medium'
-            if (self._quality == '40k'):
-                streampls = 'premium_low'
         else:
             streampls = 'public3'
 
         for channel in channels:
-            if (len(self._api_key)):
+            if self._api_key:
                 channel['streamurl'] = 'http://' + hostname + '/' + streampls + '/' + channel['key'] + '.pls?' + self._api_key
             else:
                 channel['streamurl'] = 'http://' + hostname + '/' + streampls + '/' + channel['key'] + '.pls'

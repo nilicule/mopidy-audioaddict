@@ -1,5 +1,9 @@
 Changelog
 =========
+v0.2.3 (2014-11-02)
+-------------------
+- Username and password are now completely optional
+
 v0.2.2 (2014-11-02)
 -------------------
 - Fix bug for users without premium, but with a valid AudioAddict API key

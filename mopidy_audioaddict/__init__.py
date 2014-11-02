@@ -4,7 +4,7 @@ import os
 
 from mopidy import config, ext
 
-__version__ = '0.2.2'
+__version__ = '0.2.3'
 
 
 class Extension(ext.Extension):
@@ -21,7 +21,7 @@ class Extension(ext.Extension):
         schema = super(Extension, self).get_config_schema()
         schema['username'] = config.String(optional=True)
         schema['password'] = config.Secret(optional=True)
-        schema['quality'] = config.String()
+        schema['quality'] = config.String(optional=True)
         schema['difm'] = config.Boolean()
         schema['radiotunes'] = config.Boolean()
         schema['rockradio'] = config.Boolean()
