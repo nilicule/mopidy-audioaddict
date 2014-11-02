@@ -45,7 +45,7 @@ The plugin will cache channel lists for each of the stations to avoid wasting an
 Project resources
 =================
 
-- `Source code <https://github.com/nilicule/mopidy-audioaddict>`
-- `Issue tracker <https://github.com/nilicule/mopidy-audioaddict/issues>`
+- `Source code <https://github.com/nilicule/mopidy-audioaddict>`_
+- `Issue tracker <https://github.com/nilicule/mopidy-audioaddict/issues>`_
 
 Bugs, feedback and patches are always welcome!
