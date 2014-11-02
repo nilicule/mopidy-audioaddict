@@ -46,6 +46,6 @@ Project resources
 =================
 
 - `Source code <https://github.com/nilicule/mopidy-audioaddict>`
-- `Issue tracker <https://github.com/nilicule/mopidy-audioaddict`
+- `Issue tracker <https://github.com/nilicule/mopidy-audioaddict/issues>`
 
 Bugs, feedback and patches are always welcome!
