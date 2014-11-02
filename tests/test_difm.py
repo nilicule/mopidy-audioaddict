@@ -1,9 +1,9 @@
 import unittest
 
-from mopidy_difm.difm import DigitallyImportedClient
+from mopidy_audioaddict.client import AudioAddict
 
 
-class DigitallyImportedClientTest(unittest.TestCase):
+class AudioAddictClientTest(unittest.TestCase):
 
     def test_init_proxy(self):
         proxy = "http://user:pass@proxy.lan:8080"

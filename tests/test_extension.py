@@ -1,7 +1,7 @@
 import mock
 import unittest
 
-from mopidy_difm import Extension, actor as backend_lib
+from mopidy_audioaddict import Extension, actor as backend_lib
 
 
 class ExtensionTest(unittest.TestCase):
@@ -11,7 +11,7 @@ class ExtensionTest(unittest.TestCase):
 
         config = ext.get_default_config()
 
-        self.assertIn('[difm]', config)
+        self.assertIn('[audioaddict]', config)
         self.assertIn('enabled = True', config)
 
     def test_get_config_schema(self):
@@ -20,7 +20,13 @@ class ExtensionTest(unittest.TestCase):
         schema = ext.get_config_schema()
 
         self.assertIn('quality', schema)
-        self.assertIn('encoding', schema)
+        self.assertIn('username', schema)
+        self.assertIn('password', schema)
+        self.assertIn('difm', schema)
+        self.assertIn('radiotunes', schema)
+        self.assertIn('rockradio', schema)
+        self.assertIn('jazzradio', schema)
+        self.assertIn('frescaradio', schema)
 
     def test_validate_environment(self):
         ext = Extension()
@@ -34,4 +40,4 @@ class ExtensionTest(unittest.TestCase):
         ext.setup(registry)
 
         registry.add.assert_called_once_with(
-            'backend', backend_lib.DigitallyImportedBackend)
+            'backend', backend_lib.AudioAddictBackend)

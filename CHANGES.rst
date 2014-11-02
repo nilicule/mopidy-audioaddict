@@ -1,6 +1,13 @@
 Changelog
 =========
+v0.2.1 (2014-11-02)
+-------------------
+- Fixed bug for users without premium, now picks correct stream URL
+- Only attempt to get API key when authentication details are available
+- Bumped version number to avoid confusion with earlier retracted 0.2 release
+
 v0.1.1 (2014-10-13)
+-------------------
 - Renamed project to Mopidy-AudioAddict
 - Added support for the entire AudioAddict network. The extension
   now plays DI.FM, RadioTunes, RockRadio, JazzRadio and FrescaRadio
