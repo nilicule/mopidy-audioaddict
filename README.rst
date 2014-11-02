@@ -17,7 +17,7 @@ Make sure you enable the extension after you've completed the installation. You 
 need the Mopidy-Stream extension enabled - it's bundled with Mopidy, so unless you disabled it
 it should be available.
 
-Example configuration:
+Example configuration::
 
     [audioaddict]
     # enable plugin
