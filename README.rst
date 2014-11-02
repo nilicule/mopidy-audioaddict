@@ -22,11 +22,11 @@ Example configuration::
     [audioaddict]
     # enable plugin
     enabled = true
-    # username and password
+    # username and password (optional)
     username = john@doe.net
     password = supersecret
     # you need an account if you want to set stream quality
-    # valid options:
+    # valid options are:
     #   40k, 64k (free)
     #   40k, 64k, 128k, 320k (premium)
     quality = 320k
@@ -37,8 +37,15 @@ Example configuration::
     jazzradio = true
     frescaradio = true
 
+If you choose not to provide a username and password then the plugin will default to the
+lower-quality 40k public stream.
+
+The plugin will cache channel lists for each of the stations to avoid wasting any bandwidth.
 
 Project resources
 =================
 
-Bugs, feedback and patches are always welcome at https://github.com/nilicule/mopidy-audioaddict
+- `Source code <https://github.com/nilicule/mopidy-audioaddict>`
+- `Issue tracker <https://github.com/nilicule/mopidy-audioaddict`
+
+Bugs, feedback and patches are always welcome!
