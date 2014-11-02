@@ -11,7 +11,6 @@ from . import client, translator
 
 logger = logging.getLogger(__name__)
 
-
 class AudioAddictBackend(pykka.ThreadingActor, backend.Backend):
     uri_schemes = ['audioaddict']
 
@@ -42,8 +41,6 @@ class AudioAddictLibrary(backend.LibraryProvider):
             for radiostation in self.backend.audioaddict.radiostations():
                 result.append(translator.radiostation_to_ref(radiostation))
         elif variant == 'radiostation' and identifier:
-            for radiostation in self.backend.audioaddict.radiostations(identifier):
-                result.append(translator.radiostation_to_ref(radiostation))
             for channel in self.backend.audioaddict.channels(radiostation=identifier):
                 result.append(translator.channel_to_ref(channel))
         else:

@@ -30,6 +30,7 @@ class AudioAddict(object):
         else:
             self._api_key = None
             self._has_premium = False
+            logger.info('AudioAddict: premium streams not available on your account')
 
     def flush(self):
         self._cache = {}
@@ -58,20 +59,28 @@ class AudioAddict(object):
         if radiostation:
             radiostation = int(radiostation)
             if radiostation == 1:
+                station_name = 'Digitally Imported'
                 hostname = 'listen.di.fm'
             elif radiostation == 2:
+                station_name = 'RadioTunes'
                 hostname = 'listen.radiotunes.com'
             elif radiostation == 3:
+                station_name = 'RockRadio'
                 hostname = 'listen.rockradio.com'
             elif radiostation == 4:
+                station_name = 'JazzRadio'
                 hostname = 'listen.jazzradio.com'
             elif radiostation == 5:
+                station_name = 'FrescaRadio'
                 hostname = 'listen.frescaradio.com'
             else:
                 return []
 
             station_uri = 'http://' + hostname + '/streamlist'
             channels = self._fetch(station_uri, [])
+
+            channel_count = len(channels)
+            logger.info('AudioAddict: loading %s channels on %s', channel_count, station_name)
         else:
             return []
 
@@ -110,6 +119,8 @@ class AudioAddict(object):
         return channel
 
     def _fetchApiKey(self, username, password):
+        logger.info('AudioAddict: authenticating with API')
+
         payload = {'username': username, 'password': password}
         r = requests.post("https://api.audioaddict.com/v1/di/members/authenticate", data=payload)
         json_object_raw = r.json()
@@ -119,8 +130,10 @@ class AudioAddict(object):
 
         if not subscriptions:
             has_premium = False
+            logger.info('AudioAddict: premium streams not available on your account')
         else:
             has_premium = True
+            logger.info('AudioAddict: premium streams enabled on your account')
 
         return (listen_key, has_premium)
 

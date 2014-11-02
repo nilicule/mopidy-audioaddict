@@ -1,5 +1,10 @@
 Changelog
 =========
+v0.2.5 (2014-11-02)
+-------------------
+- Be slightly more verbose on API authentication, premium status, number of channels found
+- Fixed bug where stations were shown in channel list
+
 v0.2.4 (2014-11-02)
 -------------------
 - Fixed bug where disabled stations were still shown in Mopidy
