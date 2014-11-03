@@ -1,5 +1,10 @@
 Changelog
 =========
+v0.2.7 (2014-11-03)
+-------------------
+- Removed example (but bogus) username and password from ext.conf as it caused crashes
+  for people who didn't add the config block to their Mopidy configuration
+
 v0.2.6 (2014-11-03)
 -------------------
 - Added proxy support
