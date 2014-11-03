@@ -174,7 +174,8 @@ class AudioAddict(object):
         except Exception, e:
             logger.error("AudioAddict exception: %s", e)
         else:
-            data = json.load(r.text)
+            # Parse JSON object
+            data = r.json()
             self._cache[uri] = data
             self._backoff = 1
             return data
