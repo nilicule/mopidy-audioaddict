@@ -1,5 +1,10 @@
 Changelog
 =========
+v0.2.6 (2014-11-03)
+-------------------
+- Added proxy support
+- Cleaning up tests folder in preparation of new unit tests
+
 v0.2.5 (2014-11-02)
 -------------------
 - Be slightly more verbose on API authentication, premium status, number of channels found
