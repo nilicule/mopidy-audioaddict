@@ -11,11 +11,38 @@ from . import client, translator
 
 logger = logging.getLogger(__name__)
 
+def format_proxy(scheme, username, password, hostname, port):
+    # Format Proxy URL
+    if hostname:
+        # scheme must exists, so if None is give, we set default to http
+        if not scheme:
+            scheme = "http"
+        # idem with port, default at 80
+        if not port or port < 0:
+            port = 80
+        # with authentification
+        if username and password:
+            return "%s://%s:%s@%s:%i" % (
+                scheme, username, password, hostname, port)
+        # ... or without
+        else:
+            return "%s://%s:%i" % (scheme, hostname, port)
+    else:
+        return None
+
 class AudioAddictBackend(pykka.ThreadingActor, backend.Backend):
     uri_schemes = ['audioaddict']
 
     def __init__(self, config, audio):
         super(AudioAddictBackend, self).__init__()
+
+        full_proxy = format_proxy(
+            scheme=config['proxy']['scheme'],
+            username=config['proxy']['username'],
+            password=config['proxy']['password'],
+            hostname=config['proxy']['hostname'],
+            port=config['proxy']['port'])
+
         self.audioaddict = client.AudioAddict(
             config['audioaddict']['username'],
             config['audioaddict']['password'],
@@ -25,6 +52,7 @@ class AudioAddictBackend(pykka.ThreadingActor, backend.Backend):
             config['audioaddict']['rockradio'],
             config['audioaddict']['jazzradio'],
             config['audioaddict']['frescaradio'],
+            proxy=full_proxy
         )
         self.library = AudioAddictLibrary(backend=self)
         self.playback = AudioAddictPlayback(audio=audio, backend=self)

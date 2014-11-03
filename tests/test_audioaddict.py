@@ -1,9 +1,10 @@
 import unittest
 
-from mopidy_audioaddict.client import AudioAddict
+from mopidy_audioaddict.actor import
 
 
 class DigitallyImportedClientTest(unittest.TestCase):
+    self._difm = 'True'
 
     def test_refresh(self):
         audioaddict = AudioAddict()
