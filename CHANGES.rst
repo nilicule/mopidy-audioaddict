@@ -1,5 +1,14 @@
 Changelog
 =========
+
+v0.3.0 (UNRELEASED)
+-------------------
+
+- Require Mopidy >= 1.0
+
+- Updated to work with backend API changes in Mopidy 1.0
+
+
 v0.2.7 (2014-11-03)
 -------------------
 - Removed example (but bogus) username and password from ext.conf as it caused crashes

@@ -91,18 +91,11 @@ class AudioAddictLibrary(backend.LibraryProvider):
 
         return [Track(uri=ref.uri, name=ref.name)]
 
-    def find_exact(self, query=None, uris=None):
-        return None
-
-    def search(self, query=None, uris=None):
-        return None
-
 
 class AudioAddictPlayback(backend.PlaybackProvider):
-    def change_track(self, track):
-        variant, identifier = translator.parse_uri(track.uri)
+    def translate_uri(self, uri):
+        variant, identifier = translator.parse_uri(uri)
         if variant != 'channel':
-            return False
+            return None
         channel = self.backend.audioaddict.channel(identifier)
-        track = track.copy(uri=channel['streamurl'])
-        return super(AudioAddictPlayback, self).change_track(track)
+        return channel['streamurl']

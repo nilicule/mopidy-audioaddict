@@ -4,7 +4,8 @@ import os
 
 from mopidy import config, ext
 
-__version__ = '0.2.7'
+__version__ = '0.3.0'
+
 
 class Extension(ext.Extension):
     dist_name = 'Mopidy-AudioAddict'
