@@ -1,6 +1,10 @@
 Changelog
 =========
 
+v0.3.1 (UNRELEASED)
+-------------------
+- Added unwrapper for playlist files returned from AudioAddict
+
 v0.3.0 (UNRELEASED)
 -------------------
 
